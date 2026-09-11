@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MOTELA INVESTIMENT</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============ LOGIN SCREEN ============ -->
+<div id="loginScreen" class="screen">
+  <div class="login-card">
+    <div class="brand">
+      <h1>MOTELA INVESTIMENT</h1>
+      <p>Mfumo wa Usimamizi wa Biashara</p>
+    </div>
+    <form id="loginForm">
+      <label>Username</label>
+      <input type="text" id="loginUsername" required placeholder="mfano: motelafamily" autocapitalize="off" autocorrect="off" spellcheck="false" />
+      <label>Password</label>
+      <input type="password" id="loginPassword" required placeholder="********" autocapitalize="off" autocorrect="off" spellcheck="false" />
+      <button type="submit" class="btn-primary">Login</button>
+      <p id="loginError" class="error-text"></p>
+    </form>
+  </div>
+</div>
+
+<!-- ============ APP SHELL ============ -->
+<div id="appShell" class="screen hidden">
+  <header id="appHeader">
+    <div class="header-left">
+      <h2>MOTELA INVESTIMENT</h2>
+    </div>
+    <div class="header-right">
+      <span id="userNameDisplay"></span>
+      <button id="logoutBtn" class="btn-outline">Logout</button>
+    </div>
+  </header>
+
+  <!-- ============ MAIN DASHBOARD (mtumiaji mmoja anaendesha kila kitu) ============ -->
+  <div id="mainDashboard" class="hidden">
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="productsTab">Biashara</button>
+      <button class="tab-btn" data-tab="realEstateTab">Real Estate</button>
+      <button class="tab-btn" data-tab="summaryTab">Summary</button>
+      <button class="tab-btn" data-tab="expensesTab">Expenses</button>
+    </nav>
+
+    <!-- ---- PRODUCTS TAB ---- -->
+    <section id="productsTab" class="tab-content active">
+
+      <div class="card">
+        <h3>Aina ya Biashara (Categories)</h3>
+        <form id="categoryForm" class="inline-form">
+          <input type="text" id="categoryName" placeholder="mfano: Mbao, Mashine, Vifaa..." required />
+          <button type="submit" class="btn-primary">Add Category</button>
+        </form>
+        <div id="categoryList" class="chip-list"></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Add Bidhaa Mpya</h3>
+          <form id="productForm">
+            <label>Category</label>
+            <select id="prodCategory" required></select>
+            <label>Jina la Bidhaa</label>
+            <input type="text" id="prodName" required />
+            <label>Aina ya mbao</label>
+            <input type="text" id="prodVariant" placeholder="mfano: 6x6, 4x4" />
+            <label>Bei ya Kununulia (Buying Price)</label>
+            <input type="number" id="prodBuyPrice" required min="0" />
+            <label>Bei ya Kuuzia (Selling Price)</label>
+            <input type="number" id="prodSellPrice" required min="0" />
+            <label>Stock ya Kuanzia</label>
+            <input type="number" id="prodStock" required min="0" />
+            <button type="submit" class="btn-primary">Add Bidhaa</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Ongeza Stock - Mbao Yard</h3>
+          <p class="hint-text">Hii ni kwa bidhaa za Mbao pekee - kila unaponunua mbao mpya na kuziweka yard, ongeza hapa. Mauzo yanapunguza stock kiotomatiki, hakuna haja ya Stock Out.</p>
+          <form id="stockForm">
+            <label>Chagua aina  ya Mbao</label>
+            <select id="stockProductSelect" required></select>
+            <label>Idadi Iliyoongezwa (Qty)</label>
+            <input type="number" id="stockQty" required min="1" />
+            <button type="submit" class="btn-primary">Ongeza Stock</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Uza Bidhaa (Sell)</h3>
+        <form id="sellForm">
+          <label>Chagua Bidhaa</label>
+          <select id="sellProductSelect" required></select>
+          <label>Bei ya Kuuzia (kwa moja)</label>
+          <input type="text" id="sellPriceDisplay" readonly />
+          <label>Idadi (Qty)</label>
+          <input type="number" id="sellQty" required min="1" />
+          <button type="submit" class="btn-primary">Sell</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>List ya Biashara</h3>
+        <div class="table-wrap">
+          <table id="productsTable">
+            <thead>
+              <tr><th>Category</th><th>Jina</th><th>Aina</th><th>Bei ya Kununulia</th><th>Bei ya Kuuzia</th><th>Stock</th><th>Action</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Ripoti ya Mauzo (Sales Report)</h3>
+        <div class="table-wrap">
+          <table id="salesTable">
+            <thead>
+              <tr><th>Bidhaa</th><th>Category</th><th>Qty</th><th>Bei Kuuzia</th><th>Jumla</th><th>Faida</th><th>Tarehe</th><th>Action</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Summary ya Mauzo kwa Siku</h3>
+        <div class="table-wrap">
+          <table id="dailySalesSummaryTable">
+            <thead>
+              <tr><th>Tarehe</th><th>Idadi ya Mauzo</th><th>Jumla ya Mauzo</th><th>Faida</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- REAL ESTATE TAB ---- -->
+    <section id="realEstateTab" class="tab-content">
+
+      <div class="card">
+        <h3>Aina za Nyumba / Biashara (House &amp; Business Types)</h3>
+        <form id="houseTypeForm" class="inline-form">
+          <input type="text" id="houseTypeName" placeholder="mfano: Single Room, Duka..." required />
+          <input type="number" id="houseTypeRate" placeholder="Kodi/Mwezi (Tsh)" required min="0" />
+          <button type="submit" class="btn-primary">Add Aina</button>
+        </form>
+        <div id="houseTypeList" class="chip-list"></div>
+      </div>
+
+      <div class="card">
+        <h3>Add Malipo ya Kodi</h3>
+        <form id="realEstateForm">
+          <label>Jina la Mpangaji</label>
+          <input type="text" id="tenantName" required />
+
+          <label>Aina ya Nyumba</label>
+          <select id="houseType" required></select>
+
+          <label>Idadi ya Miezi ya Kulipia</label>
+          <select id="numMonths" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+
+          <label>Tarehe ya Malipo</label>
+          <input type="date" id="paymentDate" required />
+
+          <label>Jumla ya Kiasi</label>
+          <input type="text" id="totalPaidDisplay" readonly />
+
+          <button type="submit" class="btn-primary">Add Malipo</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="card-header-row">
+          <h3>Rekodi za Malipo</h3>
+          <button id="downloadRealEstatePdf" class="btn-outline">⬇ Download PDF</button>
+        </div>
+        <div class="table-wrap">
+          <table id="realEstateTable">
+            <thead>
+              <tr><th>Mpangaji</th><th>Aina</th><th>Rate/Mwezi</th><th>Miezi</th><th>Jumla</th><th>Tarehe</th><th>Tarehe ya kuanza kodi mpya</th><th>Action</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- SUMMARY TAB ---- -->
+    <section id="summaryTab" class="tab-content">
+      <div class="card">
+        <h3>Filter Summary</h3>
+        <div class="period-selector">
+          <button class="period-btn active" data-period="quarterly">Quarterly</button>
+          <button class="period-btn" data-period="semiannual">Semi-Annual</button>
+          <button class="period-btn" data-period="annual">Annually</button>
+        </div>
+        <p id="periodLabel" class="period-label"></p>
+      </div>
+
+      <div id="summaryStatsContainer" class="grid-4">
+        <!-- Stat cards za categories na house types zita-render hapa kwa dynamic -->
+      </div>
+
+      <div class="card expense-line">
+        <span class="stat-label">Jumla ya Matumizi (Expenses) kipindi hiki</span>
+        <span id="statTotalExpenses" class="stat-value">0</span>
+      </div>
+
+      <div class="card total-card">
+        <span class="stat-label">JUMLA KUU (Total)</span>
+        <span id="statGrandTotal" class="stat-value-big">0</span>
+      </div>
+
+      <div class="card">
+        <button id="downloadSummaryPdf" class="btn-outline">⬇ Download PDF</button>
+      </div>
+    </section>
+
+    <!-- ---- EXPENSES TAB ---- -->
+    <section id="expensesTab" class="tab-content">
+      <div class="card">
+        <h3>Add Expense</h3>
+        <form id="expenseForm">
+          <label>Tarehe</label>
+          <input type="date" id="expenseDate" required />
+          <label>Maelezo ya Expense</label>
+          <input type="text" id="expenseDesc" required placeholder="mfano: mafuta, ukarabati, usafiri..." />
+          <label>Source of Fund</label>
+          <select id="expenseSource" required></select>
+          <label>Kiasi cha Expense</label>
+          <input type="number" id="expenseAmount" required min="0" />
+          <button type="submit" class="btn-primary">Save Expense</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>Rekodi za Expenses</h3>
+        <div class="table-wrap">
+          <table id="expensesTable">
+            <thead><tr><th>Tarehe</th><th>Maelezo</th><th>Source</th><th>Kiasi</th><th>Action</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<!-- Firebase (compat) -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<!-- jsPDF for PDF reports -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,534 @@
+/* =========================================================
+   MOTELA INVESTIMENT — Fintech-style CSS
+   ========================================================= */
+
+:root {
+  --bg: #0f1420;
+  --bg-soft: #141b2b;
+  --card-bg: #1a2233;
+  --card-border: #263043;
+  --text-main: #e8ecf4;
+  --text-muted: #8b94a8;
+  --accent: #4f7cff;
+  --accent-hover: #3d68ea;
+  --accent-soft: rgba(79, 124, 255, 0.12);
+  --success: #2ecc8f;
+  --success-soft: rgba(46, 204, 143, 0.12);
+  --error: #ff5c72;
+  --error-soft: rgba(255, 92, 114, 0.12);
+  --warning: #f5a623;
+  --warning-soft: rgba(245, 166, 35, 0.12);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text-main);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+h1, h2, h3 { margin: 0 0 6px 0; font-weight: 700; letter-spacing: -0.01em; }
+h3 { font-size: 16px; color: var(--text-main); margin-bottom: 14px; }
+p { margin: 0; }
+
+.hidden { display: none !important; }
+
+/* ---------------- SCREENS ---------------- */
+.screen {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ---------------- LOGIN ---------------- */
+#loginScreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(79, 124, 255, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(46, 204, 143, 0.1), transparent 40%),
+    var(--bg);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  box-shadow: var(--shadow);
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 26px;
+}
+.brand h1 {
+  font-size: 22px;
+  background: linear-gradient(90deg, #4f7cff, #2ecc8f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.brand p {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.hint-text {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin: -8px 0 14px;
+  line-height: 1.4;
+}
+
+/* ---------------- FORMS ---------------- */
+form label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 14px 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+form label:first-of-type { margin-top: 0; }
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 11px 13px;
+  background: var(--bg-soft);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font-family: var(--font);
+  font-size: 14.5px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+input::placeholder { color: #5b6478; }
+input:focus, select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+input[readonly] {
+  background: var(--card-border);
+  color: var(--text-muted);
+}
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238b94a8' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 34px;
+}
+
+.error-text {
+  color: var(--error);
+  font-size: 13px;
+  margin-top: 12px;
+  min-height: 16px;
+}
+
+/* ---------------- BUTTONS ---------------- */
+.btn-primary, .btn-outline {
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  padding: 11px 18px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: #fff;
+  width: 100%;
+  margin-top: 18px;
+}
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--text-main);
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--error);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.link-btn:hover { text-decoration: underline; }
+
+/* ---------------- APP SHELL / HEADER ---------------- */
+#appShell {
+  padding-bottom: 40px;
+}
+
+#appHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--card-border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.header-left { display: flex; align-items: center; gap: 10px; }
+.header-left h2 { font-size: 17px; }
+.header-right { display: flex; align-items: center; gap: 14px; }
+#userNameDisplay { color: var(--text-muted); font-size: 13.5px; }
+
+.badge {
+  display: inline-block;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.badge.sales {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+/* ---------------- TABS ---------------- */
+.tabs {
+  display: flex;
+  gap: 6px;
+  padding: 16px 24px 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  padding: 10px 16px;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  font-family: var(--font);
+  font-size: 13.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+.tab-btn:hover { color: var(--text-main); }
+.tab-btn.active {
+  color: var(--accent);
+  background: var(--card-bg);
+  border-color: var(--card-border);
+  border-bottom-color: var(--card-bg);
+}
+
+.tab-content {
+  display: none;
+  padding: 20px 24px 0;
+}
+.tab-content.active { display: block; }
+
+/* ---------------- LAYOUT GRIDS ---------------- */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+@media (max-width: 900px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .grid-4 { grid-template-columns: 1fr; }
+}
+
+/* ---------------- CARDS ---------------- */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.card-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.card-header-row h3 { margin: 0; }
+
+/* ---------------- TABLES ---------------- */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--card-border);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  min-width: 560px;
+}
+thead th {
+  text-align: left;
+  padding: 11px 14px;
+  background: var(--bg-soft);
+  color: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--card-border);
+  white-space: nowrap;
+}
+tbody td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--card-border);
+  color: var(--text-main);
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
+
+.date-total-row td {
+  background: var(--accent-soft);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ---------------- CHIPS (Categories / House Types) ---------------- */
+.inline-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin-bottom: 14px;
+}
+.inline-form input {
+  flex: 1;
+  min-width: 160px;
+}
+.inline-form .btn-primary {
+  width: auto;
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid rgba(79, 124, 255, 0.25);
+  border-radius: 999px;
+  padding: 6px 8px 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.chip-remove {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+}
+.chip-remove:hover {
+  opacity: 1;
+  background: rgba(255, 92, 114, 0.15);
+  color: var(--error);
+}
+
+/* ---------------- SUMMARY STATS ---------------- */
+.stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.stat-value {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+.stat-value-big {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--success);
+}
+
+.expense-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.expense-line .stat-value { color: var(--error); }
+
+.total-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(79, 124, 255, 0.12), rgba(46, 204, 143, 0.08));
+  border-color: rgba(79, 124, 255, 0.3);
+}
+
+/* ---------------- PERIOD SELECTOR ---------------- */
+.period-selector {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.period-btn {
+  cursor: pointer;
+  background: var(--bg-soft);
+  border: 1px solid var(--card-border);
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+.period-btn:hover { color: var(--text-main); }
+.period-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.period-label {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ---------------- STATUS BADGES ---------------- */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.status-approved {
+  background: var(--success-soft);
+  color: var(--success);
+}
+.status-pending {
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+
+/* ---------------- TOAST ---------------- */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-main);
+  padding: 13px 22px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  z-index: 999;
+  max-width: 90vw;
+}
+.toast.success {
+  border-color: rgba(46, 204, 143, 0.4);
+  color: var(--success);
+}
+.toast.error {
+  border-color: rgba(255, 92, 114, 0.4);
+  color: var(--error);
+}
+
+/* ---------------- SALESPERSON DASHBOARD ---------------- */
+#salespersonDashboard {
+  padding: 20px 24px 0;
+}
+
+/* ---------------- RESPONSIVE TWEAKS ---------------- */
+@media (max-width: 640px) {
+  #appHeader { padding: 14px 16px; }
+  .tabs { padding: 14px 16px 0; }
+  .tab-content { padding: 16px 16px 0; }
+  #salespersonDashboard { padding: 16px 16px 0; }
+  .login-card { padding: 26px 20px; }
+  .stat-value-big { font-size: 24px; }
+}
