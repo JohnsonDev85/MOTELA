@@ -1,26 +1,26 @@
 /* =========================================================
-   MOTELA INVESTIMENT — Fintech-style CSS
+   MOTELA INVESTIMENT — Earth-tone / Wood theme
    ========================================================= */
 
 :root {
-  --bg: #0f1420;
-  --bg-soft: #141b2b;
-  --card-bg: #1a2233;
-  --card-border: #263043;
-  --text-main: #e8ecf4;
-  --text-muted: #8b94a8;
-  --accent: #4f7cff;
-  --accent-hover: #3d68ea;
-  --accent-soft: rgba(79, 124, 255, 0.12);
-  --success: #2ecc8f;
-  --success-soft: rgba(46, 204, 143, 0.12);
-  --error: #ff5c72;
-  --error-soft: rgba(255, 92, 114, 0.12);
-  --warning: #f5a623;
-  --warning-soft: rgba(245, 166, 35, 0.12);
+  --bg: #f3ecdf;
+  --bg-soft: #ece2cf;
+  --card-bg: #fdf9f1;
+  --card-border: #ddc9a3;
+  --text-main: #3a2a1a;
+  --text-muted: #86735a;
+  --accent: #a9651a;
+  --accent-hover: #8f5414;
+  --accent-soft: rgba(169, 101, 26, 0.12);
+  --success: #6f8c3f;
+  --success-soft: rgba(111, 140, 63, 0.14);
+  --error: #ad4426;
+  --error-soft: rgba(173, 68, 38, 0.12);
+  --warning: #c68a1f;
+  --warning-soft: rgba(198, 138, 31, 0.14);
   --radius: 14px;
   --radius-sm: 8px;
-  --shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow: 0 8px 22px rgba(90, 62, 27, 0.14);
   --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -55,8 +55,8 @@ p { margin: 0; }
   justify-content: center;
   padding: 20px;
   background:
-    radial-gradient(circle at 20% 20%, rgba(79, 124, 255, 0.15), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(46, 204, 143, 0.1), transparent 40%),
+    radial-gradient(circle at 15% 15%, rgba(169, 101, 26, 0.14), transparent 42%),
+    radial-gradient(circle at 85% 85%, rgba(111, 140, 63, 0.12), transparent 42%),
     var(--bg);
 }
 
@@ -76,7 +76,7 @@ p { margin: 0; }
 }
 .brand h1 {
   font-size: 22px;
-  background: linear-gradient(90deg, #4f7cff, #2ecc8f);
+  background: linear-gradient(90deg, #a9651a, #6f8c3f);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -87,6 +87,7 @@ p { margin: 0; }
   margin-top: 4px;
 }
 
+/* ---------------- FORMS ---------------- */
 .hint-text {
   font-size: 12.5px;
   color: var(--text-muted);
@@ -94,7 +95,6 @@ p { margin: 0; }
   line-height: 1.4;
 }
 
-/* ---------------- FORMS ---------------- */
 form label {
   display: block;
   font-size: 12.5px;
@@ -122,7 +122,7 @@ select {
   outline: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
-input::placeholder { color: #5b6478; }
+input::placeholder { color: #a8977c; }
 input:focus, select:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-soft);
@@ -133,7 +133,7 @@ input[readonly] {
 }
 select {
   appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238b94a8' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2386735a' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");
   background-repeat: no-repeat;
   background-position: right 12px center;
   padding-right: 34px;
@@ -161,7 +161,7 @@ select {
 .btn-primary {
   background: var(--accent);
   border: 1px solid var(--accent);
-  color: #fff;
+  color: #fff8ee;
   width: 100%;
   margin-top: 18px;
 }
@@ -332,7 +332,7 @@ tbody td {
   color: var(--text-main);
 }
 tbody tr:last-child td { border-bottom: none; }
-tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
+tbody tr:hover { background: rgba(169, 101, 26, 0.05); }
 
 .date-total-row td {
   background: var(--accent-soft);
@@ -368,8 +368,8 @@ tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
   align-items: center;
   gap: 8px;
   background: var(--accent-soft);
-  color: var(--accent);
-  border: 1px solid rgba(79, 124, 255, 0.25);
+  color: var(--accent-hover);
+  border: 1px solid rgba(169, 101, 26, 0.28);
   border-radius: 999px;
   padding: 6px 8px 6px 14px;
   font-size: 13px;
@@ -378,7 +378,7 @@ tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
 .chip-remove {
   background: none;
   border: none;
-  color: var(--accent);
+  color: var(--accent-hover);
   cursor: pointer;
   font-size: 16px;
   line-height: 1;
@@ -392,7 +392,7 @@ tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
 }
 .chip-remove:hover {
   opacity: 1;
-  background: rgba(255, 92, 114, 0.15);
+  background: rgba(173, 68, 38, 0.15);
   color: var(--error);
 }
 
@@ -439,8 +439,8 @@ tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
-  background: linear-gradient(135deg, rgba(79, 124, 255, 0.12), rgba(46, 204, 143, 0.08));
-  border-color: rgba(79, 124, 255, 0.3);
+  background: linear-gradient(135deg, rgba(169, 101, 26, 0.12), rgba(111, 140, 63, 0.1));
+  border-color: rgba(169, 101, 26, 0.3);
 }
 
 /* ---------------- PERIOD SELECTOR ---------------- */
@@ -465,7 +465,7 @@ tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
 .period-btn.active {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: #fff8ee;
 }
 .period-label {
   margin-top: 10px;
@@ -510,11 +510,11 @@ tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
   max-width: 90vw;
 }
 .toast.success {
-  border-color: rgba(46, 204, 143, 0.4);
+  border-color: rgba(111, 140, 63, 0.4);
   color: var(--success);
 }
 .toast.error {
-  border-color: rgba(255, 92, 114, 0.4);
+  border-color: rgba(173, 68, 38, 0.4);
   color: var(--error);
 }
 
